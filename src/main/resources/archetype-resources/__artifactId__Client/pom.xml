@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>${rootArtifactId}</artifactId>
+        <groupId>${groupId}</groupId>
+        <version>${version}</version>
+    </parent>
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}Client</artifactId>
+    <version>${version}</version>
+    <packaging>jar</packaging>
+    <name>${artifactId}Client</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${artifactId}Common</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>generarClienteWS</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlLocation>/wsdl/${artifactId}.wsdl</wsdlLocation>
+                            <wsdlDirectory>${project.parent.basedir}/${artifactId}Common/target/classes/wsdl</wsdlDirectory>
+                            <wsdlFiles>
+                                <wsdlFile>${artifactId}.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>${package}.client</packageName>
+                            <staleFile>${project.build.directory}/jaxws/stale/${artifactId}.stale</staleFile>
+                            <xnocompile>true</xnocompile>
+                            <target>2.1</target>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>

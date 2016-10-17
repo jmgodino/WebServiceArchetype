@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+    name="WebServiceArchetype"
+    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <requiredProperties>
+        <requiredProperty key="wsUrl"><defaultValue>http://localhost:8080/${artifactId}Port</defaultValue></requiredProperty>
+        <requiredProperty key="wsQname" />
+        <requiredProperty key="databaseUser"><defaultValue>sa</defaultValue></requiredProperty>
+        <requiredProperty key="databasePasswd"><defaultValue>sa</defaultValue></requiredProperty>
+        <requiredProperty key="databaseJndi"><defaultValue>/jdbc/test</defaultValue></requiredProperty>
+        <requiredProperty key="databaseUrl"><defaultValue>jdbc:h2:./db/test.db;DB_CLOSE_DELAY=-1;</defaultValue></requiredProperty>
+    </requiredProperties>
+    <fileSets>
+        <fileSet filtered="true " encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+			<excludes>
+				<exclude>**/*.mv.db</exclude>
+			</excludes>
+        </fileSet>
+        <fileSet filtered="false " encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>**/*.mv.db</include>
+            </includes>
+        </fileSet>		
+    </fileSets>
+</archetype-descriptor>

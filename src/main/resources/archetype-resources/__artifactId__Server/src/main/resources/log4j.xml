@@ -1,0 +1,21 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+   <appender name="${artifactId}Appender" class="org.apache.log4j.DailyRollingFileAppender">
+      <param name="DatePattern" value="'_'yyyy-MM-dd"/>
+      
+      <param name="File" value="${symbol_dollar}{directorio.log}/Utilidades-${artifactId}.log"/>
+      
+      <param name="Append" value="true"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="[%d{dd/MM/yyyy HH:mm:ss}] %5p %m%n"/>
+      </layout>
+   </appender>
+   <root>
+      <priority value="info"/>
+      <appender-ref ref="${artifactId}Appender"/>
+   </root>
+</log4j:configuration>
