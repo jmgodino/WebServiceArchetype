@@ -22,19 +22,19 @@
 
 mvn archetype:generate -DarchetypeGroupId=com.picoto.ws -DarchetypeArtifactId=WebServiceArchetype -DarchetypeVersion=1.0.0 -DgroupId=MYGROUP -DartifactId=MYARTIFACT -Dpackage=MYPACKAGE -Dversion=1.0.0 -DwsQname=http://MYNAMESPACE/
 
-4.- This will generate a new Project called <MYARTIFACT> (choose the right name). If you don't like the default values, you can change them, by default we work on a local file based h2sql database with a table named testtable(codigo, literal).
+4.- This will generate a new Project called <MYARTIFACT> (choose the right name). If you don't like the default values, you can change them, by default we work on a local file based h2sql database with a table named testtable(codigo number, literal varchar(100)).
 
 5.- You can compile the whole project:
 
 cd MYARTIFACT
 
-mvn clean install -DskipTests=true
+mvn clean install
 
 6.- You can run the Tomcat server with a local file based h2sql database:
 
 cd MYARTIFACT/MYARTIFACTServer
 
-mvn tomcat7:run-war
+mvn validate tomcat7:run-war
 
 7.- You can execute the client through a test case:
 
